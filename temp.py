@@ -6,7 +6,7 @@ Created on Tue Jan 16 07:46:05 2018
 @author: diwakar
 """
 
-import time;
+import numpy as np
+import pandas as pd
 
-localtime = time.localtime(time.time())
-print ("Local current time :", localtime)
+data= pd.read_csv('set2.csv')
