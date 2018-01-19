@@ -31,4 +31,5 @@ from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 
 from sklearn.model_selection import cross_val_score
-scores = cross_val_score(classifier, X, y, cv=5)
+
+scores = cross_val_score(classifier, X, y)
