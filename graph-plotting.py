@@ -14,13 +14,36 @@ data = pd.read_csv('set2.csv')
 X=data.iloc[:,3:7].values
 y=data.iloc[:,7].values
 
+#Core -0
 
-x=X[0:200,0:1]
-y=y[0:200]
+x=X[0:20,0:1]
+y=y[0:20]
+
+
+plt.xlabel("Core 0")
+plt.ylabel("Actual Requiress")
+plt.scatter(x, y, marker='o',edgecolors='green')
+plt.title('Core 0 - Actual')
 
 
 
-plt.scatter(x, y, marker='o', s=5, zorder=10)
 
-plt.title('griddata test (%d points)' % npts)
+x1=X[0:20,0:1]
+
+plt.xlabel("Core 0")
+plt.ylabel("Actual Requiress")
+plt.scatter(x1, y, marker='o',edgecolors='red')
+
+plt.title('Core 0 - Actual')
+plt.show()
+
+
+plt.figure(1)
+plt.subplot()
+plt.plot(x,y,marker='o')
+
+plt.figure(2)
+plt.subplot()
+plt.plot(x1, y, marker='o')
+
 plt.show()
