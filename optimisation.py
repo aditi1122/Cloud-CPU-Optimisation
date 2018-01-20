@@ -13,7 +13,7 @@ data= pd.read_csv('set.csv')
 
 X=data.iloc[:,3:7].values
 y=data.iloc[:,7].values
-
+tot_test=data.iloc[238425:,2:3].values
 
 from sklearn.cross_validation import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
@@ -33,3 +33,12 @@ cm = confusion_matrix(y_test, y_pred)
 
 from sklearn.model_selection import cross_val_score
 scores = cross_val_score(classifier, X, y)
+
+
+import matplotlib.pyplot as plt
+plt.scatter(data.iloc[238425:238945,2:3].values,y_test[0:520],color='red')
+plt.plot(data.iloc[238425:238945,2:3].values,y_pred[0:520])
+plt.title('Comparision between the Test and Predictedd Values')
+plt.xlabel('Total Percentage used')
+plt.ylabel('Cores Used')
+plt.show()
