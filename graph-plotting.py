@@ -15,35 +15,37 @@ X=data.iloc[:,3:7].values
 y=data.iloc[:,7].values
 
 #Core -0
-
-x=X[0:20,0:1]
-y=y[0:20]
-
-
-plt.xlabel("Core 0")
-plt.ylabel("Actual Requiress")
-plt.scatter(x, y, marker='o',edgecolors='green')
-plt.title('Core 0 - Actual')
-
-
-
-
-x1=X[0:20,0:1]
-
-plt.xlabel("Core 0")
-plt.ylabel("Actual Requiress")
-plt.scatter(x1, y, marker='o',edgecolors='red')
-
-plt.title('Core 0 - Actual')
+plt.plot(X[1:10000,0:1],y[1:10000],'bo')
+plt.xlabel('CPU 0')
+plt.ylabel('Total Cores Required')
+plt.show()
+#Core-1
+plt.plot(X[1:10000,1:2],y[1:10000],'bo')
+plt.xlabel('CPU 1')
+plt.ylabel('Total Cores Required')
+plt.show()
+#Core-2
+plt.plot(X[1:10000,2:3],y[1:10000],'bo')
+plt.xlabel('CPU 2')
+plt.ylabel('Total Cores Required')
+plt.show()
+#Core-3
+plt.plot(X[1:10000,3],y[1:10000],'bo')
+plt.xlabel('CPU 3')
+plt.ylabel('Total Cores Required')
 plt.show()
 
 
-plt.figure(1)
-plt.subplot()
-plt.plot(x,y,marker='o')
 
-plt.figure(2)
-plt.subplot()
-plt.plot(x1, y, marker='o')
+
+
+#All  in one grapg plots
+import matplotlib.pyplot as plt
+
+fig, axs = plt.subplots(2, 2, figsize=(5, 5))
+axs[0, 0].plot(X[1:10000,3],y[1:10000],'bo')
+axs[1, 0].plot(X[1:10000,2:3],y[1:10000],'bo')
+axs[0, 1].plot(X[1:10000,1:2],y[1:10000],'bo')
+axs[1, 1].plot(X[1:10000,0:1],y[1:10000],'bo')
 
 plt.show()

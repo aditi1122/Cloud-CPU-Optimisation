@@ -9,7 +9,7 @@ Created on Tue Jan 16 07:46:05 2018
 import numpy as np
 import pandas as pd
 
-data= pd.read_csv('set2.csv')
+data= pd.read_csv('set.csv')
 
 X=data.iloc[:,3:7].values
 y=data.iloc[:,7].values
@@ -30,6 +30,6 @@ y_pred = classifier.predict(X_test)
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 
-from sklearn.model_selection import cross_val_score
 
+from sklearn.model_selection import cross_val_score
 scores = cross_val_score(classifier, X, y)
