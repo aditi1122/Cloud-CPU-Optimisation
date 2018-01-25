@@ -108,32 +108,75 @@ plt.plot(diabetes_X_test, diabetes_y_pred, color='blue', linewidth=3)
 
 plt.xticks(())
 plt.yticks(())
-
 plt.show()
 
 
-
-
-
 #Elastic Nets
-
 from sklearn.linear_model import ElasticNet
 from sklearn.datasets import make_regression
-
 X, y = make_regression(n_features=2, random_state=0)
 regr = ElasticNet(random_state=0)
 regr.fit(X_train, y_train)
-
-
-
 print(regr.coef_) 
-
 print(regr.intercept_) 
-
 y_pred_elas = regr.predict(X_test)
 
 # The mean squared error
-print("Mean squared error: %.2f"
-      % mean_squared_error(diabetes_y_test, y_pred_elas))
+print("Mean squared error: %.2f" % mean_squared_error(diabetes_y_test, y_pred_elas))
 # Explained variance score: 1 is perfect prediction
-print('Variance score: %.2f' % r2_score(diabetes_y_test, diabetes_y_pred))
+print('Variance score: %.2f' % r2_score(diabetes_y_test, y_pred_elas))
+
+#Ridge Regression
+from sklearn import linear_model
+reg = linear_model.Ridge (alpha = .5)
+reg.fit (X_train,y_train) 
+
+reg.coef_
+reg.intercept_ 
+
+y_pred_ridge =reg.predict(X_test)
+
+# The mean squared error
+print("Mean squared error: %.2f" % mean_squared_error(diabetes_y_test, y_pred_elas))
+# Explained variance score: 1 is perfect prediction
+print('Variance score: %.2f' % r2_score(diabetes_y_test, y_pred_elas))
+
+
+
+
+#Graph Plotting
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import linear_model
+
+# X is the 10x10 Hilbert matrix
+X = 1. / (np.arange(1, 11) + np.arange(0, 10)[:, np.newaxis])
+y = np.ones(10)
+
+# #############################################################################
+# Compute paths
+
+n_alphas = 200
+alphas = np.logspace(-10, -2, n_alphas)
+
+coefs = []
+for a in alphas:
+    ridge = linear_model.Ridge(alpha=a, fit_intercept=False)
+    ridge.fit(X, y)
+    coefs.append(ridge.coef_)
+
+# #############################################################################
+# Display results
+
+ax = plt.gca()
+
+ax.plot(alphas, coefs)
+ax.set_xscale('log')
+ax.set_xlim(ax.get_xlim()[::-1])  # reverse axis
+plt.xlabel('alpha')
+plt.ylabel('weights')
+plt.title('Ridge coefficients as a function of the regularization')
+plt.axis('tight')
+plt.show()
+
