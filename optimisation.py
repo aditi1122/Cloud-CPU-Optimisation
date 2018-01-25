@@ -42,3 +42,15 @@ plt.title('Comparision between the Test and Predictedd Values')
 plt.xlabel('Total Percentage used')
 plt.ylabel('Cores Used')
 plt.show()
+
+
+
+
+
+from sklearn import linear_model
+reg = linear_model.Lasso(alpha = 0.1)
+reg.fit(X_train,y_train)
+
+
+
+reg.predict([[1, 1]])
