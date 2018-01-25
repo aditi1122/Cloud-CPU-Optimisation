@@ -53,4 +53,12 @@ reg.fit(X_train,y_train)
 
 
 
-reg.predict([[1, 1]])
+lasso_y_pred = reg.predict(X_test)
+
+import matplotlib.pyplot as plt
+plt.scatter(data.iloc[238425:238445,2:3].values,y_test[0:20],color='red')
+plt.plot(data.iloc[238425:238445,2:3].values,lasso_y_pred[0:20])
+plt.title('Comparision between the Test and Predictedd Values')
+plt.xlabel('Total Percentage used')
+plt.ylabel('Cores Used')
+plt.show()
